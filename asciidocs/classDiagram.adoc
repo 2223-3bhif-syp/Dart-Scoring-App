@@ -1,0 +1,12 @@
+[plantuml, target=diagram-classes, format=png]
+....
+class Home
+class Register
+class Calculator
+class Results
+
+Home -- Register
+Register -- Calculator
+Calculator -- Results
+Home -- Results
+....
