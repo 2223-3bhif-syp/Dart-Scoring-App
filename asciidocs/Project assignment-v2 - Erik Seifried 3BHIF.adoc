@@ -6,7 +6,7 @@ Erik Seifried - v2.0, 2022-10-21 <e.seifried@students.htl-leonding.ac.at> | Syst
 * Manager: <e.seifried@students.htl-leonding.ac.at> +
 * Co-Manager: <l.cvijic@students.htl-leonding.ac.at> +
 * Member: <a.nikolaus@students.htl-leonding.ac.at> +
-* Member: <a.Cjomany@students.htl-leonding.ac.at> +
+* Member: <a.Csomany@students.htl-leonding.ac.at> +
 
 == Project assignment
 
@@ -66,7 +66,7 @@ Implementing the calculator-v1 - Luka & Axel - xx.04.2023 +
 Implementing the Result - Erik - xx.04.2023
 
 |*Project organisation / Project Manager / Project Team:* +
-image:../pictures/organigramm.png[image,width=,height=]
+image:../pictures/organigramm-team-v2.png[image,width=,height=]
 
 |*Completion of the project assignment:* +
 30-10-2022
