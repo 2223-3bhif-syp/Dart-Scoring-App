@@ -1,2 +1,7 @@
+= Dart Scoring App
+
 == Projektauftrag
 https://2223-3bhif-syp.github.io/Dart-Scoring-App/projectAssignment
+
+== Klassendiagramm
+https://2223-3bhif-syp.github.io/Dart-Scoring-App/classDiagramm

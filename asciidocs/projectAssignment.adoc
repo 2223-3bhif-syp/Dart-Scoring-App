@@ -1,6 +1,6 @@
-= Dart Scoring App image:../pictures/dartlogo-v2.png[image,width=200,height=]
+= Dart Scoring App image:../images/dartlogo-v2.png[image,width=200,height=]
 
-== Kontakte: image:../pictures/contact-email.png[image,width=56,height=41]
+== Kontakte: image:../images/contact-email.png[image,width=56,height=41]
 * Manager: <e.seifried@students.htl-leonding.ac.at> +
 * Co-Manager: <l.cvijic@students.htl-leonding.ac.at> +
 * Mitglied: <a.nikolaus@students.htl-leonding.ac.at> +
