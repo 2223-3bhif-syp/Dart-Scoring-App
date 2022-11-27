@@ -4,7 +4,7 @@
 * Manager: <e.seifried@students.htl-leonding.ac.at> +
 * Co-Manager: <l.cvijic@students.htl-leonding.ac.at> +
 * Mitglied: <a.nikolaus@students.htl-leonding.ac.at> +
-* Mitglied: <a.Csomany@students.htl-leonding.ac.at> +
+* Mitglied: <a.csomany@students.htl-leonding.ac.at> +
 
 == Projektauftrag
 
