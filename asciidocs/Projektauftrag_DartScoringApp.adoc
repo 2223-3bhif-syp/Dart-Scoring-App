@@ -57,8 +57,8 @@ Logo entwerfen - Erik - 15.10.2022 +
 Model erstellen - Erik - 15.10.2022 +
 Design bestimmen - Erik - 15.10.2022 +
 Aufgaben zuordnung - Luka - 30.10.2022 +
-Implementierung des Startmenues - Erik - xx.01.2022 +
-Implementierung der Erstellung von Spielern - Alex - xx.03.2022 +
+Implementierung des Startmenues - Erik - xx.01.2023 +
+Implementierung der Erstellung von Spielern - Alex - xx.03.2023 +
 Implementierung des Rechners - Luka & Axel - xx.04.2023 +
 Implementierung der Resultate nach dem Spiel - Erik & Alex - xx.04.2023
 
