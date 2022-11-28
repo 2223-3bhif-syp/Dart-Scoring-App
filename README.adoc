@@ -25,7 +25,12 @@ image::https://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLWX8BIhEpuDoFFA
 ====
 
 TIP: Das ist ein Tip
+
 NOTE: Das ist eine Note
+
 IMPORTANT: Das ist ein Important
+
 CAUTION: Das ist ein Caution
+
 WARNING: Das ist eine Warning
+
