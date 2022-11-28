@@ -1,4 +1,11 @@
 = Dart Scoring App
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
 
 == Problem
 Beim Darts muessen die Punkte manuell abgezogen werden, was kompliziert werden kann.
@@ -10,3 +17,15 @@ Eine "Dart Scoring App" erstellen, welche von Spielern im Browser verwendet kann
 == Dokumente
 - https://2223-3bhif-syp.github.io/Dart-Scoring-App/projectAssignment[Projektauftrag]
 - https://2223-3bhif-syp.github.io/Dart-Scoring-App/classDiagram[Klassendiagramm]
+
+.Programmablaufplan
+[%collapsible]
+====
+image::https://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLWX8BIhEpuDoFFAJaYgv848ADhgwK067rBmKe0u0[]
+====
+
+TIP: Das ist ein Tip
+NOTE: Das ist eine Note
+IMPORTANT: Das ist ein Important
+CAUTION: Das ist ein Caution
+WARNING: Das ist eine Warning
