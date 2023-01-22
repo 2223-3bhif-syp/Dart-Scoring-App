@@ -1,12 +1,23 @@
 [plantuml, target=diagram-classes, format=png]
 ....
-class Home
-class Register
-class Calculator
-class Results
+left to right direction
 
-Home -- Register
-Register -- Calculator
-Calculator -- Results
-Home -- Results
+class Spiel{
+    gameType: String
+}
+
+class Spieler{
+    name: String
+    id: Integer
+    punkte: Integer
+}
+
+class Rechner{
+    punkteErzielt: Integer
+    momentanerSpieler: Integer
+}
+
+
+Spieler "*"--"1" Spiel : spielt >
+Spieler "*"--"1" Rechner : benutzt >
 ....
