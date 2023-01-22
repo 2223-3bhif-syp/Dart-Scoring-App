@@ -7,12 +7,12 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-== Problem
-Beim Darts muessen die Punkte manuell abgezogen werden, was kompliziert werden kann.
+== Beschreibung
 
-== Aufgabe
-Eine "Dart Scoring App" erstellen, welche von Spielern im Browser verwendet kann.
-
+Da man, wenn man Dart spielt, die Punkte zählen muss, was kompliziert werden kann,
+wird nun ein System gebraucht, das für beliebig viele Spieler in beliebigen
+Spielmodi das Zählen übernimmt. So kann sich der Spieler voll und ganz auf das
+Spiel selbst konzentrieren.
 
 == Dokumente
 - https://2223-3bhif-syp.github.io/Dart-Scoring-App/projectAssignment[Projektauftrag]
