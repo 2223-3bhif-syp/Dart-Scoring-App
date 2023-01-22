@@ -23,3 +23,7 @@
  auf das Spiel konzentrieren, da keine Rechenfehler mehr
  entstehen werden.
 |===
+
+== Skizze zur Dart-Scoring-App
+
+image::.asciidoctor/images/Drawio_Skizze.png[]
