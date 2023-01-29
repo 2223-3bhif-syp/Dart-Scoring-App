@@ -16,7 +16,8 @@ bei komplizierten Rechnungen fehler entstehen.
 
 == 4 Sollzustand
 Die Spieler sollen in einer App die geworfenen Punkte eingeben koennen
-und diese werden dann automatisch abgezogen.
+und diese werden dann automatisch abgezogen. Das Ergebnis dieses
+Projekts ist die fertige Dart-Scoring-App.
 
 === 4.1 Funktionale Anforderungen
 
@@ -52,7 +53,7 @@ entweder bei 501 oder 301.
 
 Die Game-Klasse hat eine Variable in welcher die ID des momentanden Spielers steht nach
 3 eingaben wird diese Variable erhoeht bis sie so hoch ist wie die amountPlayer-Variable
-denn dann wird sie zurueckgesetz und beginnt wieder vom ersten Spielerzu zaehlen an.
+denn dann wird sie zurueckgesetz und beginnt wieder vom ersten Spieler zu zaehlen an.
 
 In der Variable pointsScored werden die geworfenen Punkte gespeichert und dann mithilfe
 von currentPlayer von der Punkteanzahl des richtigen Spielers abgezogen.
@@ -95,7 +96,7 @@ rectangle Dart-Scoring-App {
 ** Es koennen leicht neue Spielmodi hinzugefuegt werden
 
 == 5 Ziele
-Die Spieler muessen nicht mehr im Kopf rechne und koennen sich
+Die Spieler muessen nicht mehr im Kopf rechnen und koennen sich
 auf das Spiel konzentrieren, da keine Rechenfehler mehr
 entstehen werden.
 
