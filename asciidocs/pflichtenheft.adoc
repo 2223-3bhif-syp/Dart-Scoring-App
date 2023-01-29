@@ -1,61 +1,104 @@
 = Pflichtenheft Dart-Scoring-App
 
-== Ausgangssituation
-
+== 1 Ausgangsituation
 Dart ist ein Spiel welches weltweit verbreitet ist.
 
-== Istzustand
-
+== 2 Istzustand
 Viele Spieler spielen mit Dartscheiben, welche nicht
-automatisch die Punkte abziehen.
+automatisch die Punkte abziehen und ziehen diese dann haendisch ab.
 
-== Problemstellung
+image::img/punkteabziehen.jpg[]
 
+== 3 Problemstellung
 Beim Dart spielen muessen die Spieler selbst die geworfenen
 Punkte von ihrem momentan Punktestand abziehen, dabei koennen
 bei komplizierten Rechnungen fehler entstehen.
 
-== Sollzustand
-
+== 4 Sollzustand
 Die Spieler sollen in einer App die geworfenen Punkte eingeben koennen
 und diese werden dann automatisch abgezogen.
 
-== Datenmodel
+=== 4.1 Funktionale Anforderungen
 
+==== DOM
 [plantuml, target=diagram-classes, format=png]
 ....
 left to right direction
 
-class Spiel{
+class GameType{
     gameType: String
 }
 
-class Spieler{
+class Player{
     name: String
     id: Integer
-    punkte: Integer
+    points: Integer
 }
 
-class Rechner{
-    punkteErzielt: Integer
-    momentanerSpieler: Integer
+class Game{
+    amountPlayer: int
+    pointsScored: Integer
+    currentPlayer: Integer
 }
 
+Player "*"--"1" Game : plays a >
+Game "*"--"1" GameType : has a >
 
-Spieler "*"--"1" Spiel : spielt >
-Spieler "*"--"1" Rechner : benutzt >
 ....
 
-Der Spieler hat einen Namen und eine Id um ihn zu identifizieren.
+In der Player-Klasse is der Name, die ID und der momentane Punktestand des Spielers
+gespeichert und je nach dem welchen GameType das Game hat starten die Punkte der Spieler
+entweder bei 501 oder 301.
 
-Der spieler spielt ein Spiel, dieses kann von 501 oder 301 Punkten starten.
+Die Game-Klasse hat eine Variable in welcher die ID des momentanden Spielers steht nach
+3 eingaben wird diese Variable erhoeht bis sie so hoch ist wie die amountPlayer-Variable
+denn dann wird sie zurueckgesetz und beginnt wieder vom ersten Spielerzu zaehlen an.
 
-Der Spieler benutzt den Rechner um seine erzielten Punkte einzutragen und von
-seinen eigenen abzuziehen, im Rechner ist auch gespeichert welcher der Spieler
-gerade dran ist, um die Punkte vom richtigen Spieler abzuziehen.
+In der Variable pointsScored werden die geworfenen Punkte gespeichert und dann mithilfe
+von currentPlayer von der Punkteanzahl des richtigen Spielers abgezogen.
 
-== Ziel
+==== Wireframe
+image::img/gui.jpg[]
 
-Die Spieler muessen nicht mehr im Kopf rechne und können sich
+Spieloberflaeche wo die Benutzer die getroffenen Punkte eintragen koennen,
+es werden waehrend des Spieles die Punktestaende und die letzten 3
+Wuerfe (1 Runde) der Spieler angezeigt.
+
+=== UCD
+[plantuml, target=Use-Case-Diagramm, format=png]
+....
+left to right direction
+
+actor "Player" as pl
+
+rectangle Dart-Scoring-App {
+    usecase "Create Game" as cg
+    usecase "Input Points" as ip
+    usecase "Choose GameType" as cgt
+    usecase "Choose Player Amount" as cpa
+
+    pl -- cg
+    pl -- ip
+    cgt .> cg : extends
+    cpa .> cg : extends
+}
+....
+
+=== 4.2 Nichtfunktionale Anforderungen
+* Benutzbarkeit
+** Leicht zu bedienen
+* Zuverlaessigkeit
+** Keine Fehler bei den Rechnungen, außer bei falscher Eingabe
+* Uebertragbarkeit
+** Auf allen Geraeten mit Browser nutzbar
+* Wartbarkeit
+** Es koennen leicht neue Spielmodi hinzugefuegt werden
+
+== 5 Ziele
+Die Spieler muessen nicht mehr im Kopf rechne und koennen sich
 auf das Spiel konzentrieren, da keine Rechenfehler mehr
 entstehen werden.
+
+== 6 Mengengerüst
+* Nutzer
+** 1 bis 4 gleichzeitig

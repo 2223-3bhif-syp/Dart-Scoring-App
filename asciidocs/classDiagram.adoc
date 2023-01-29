@@ -2,22 +2,23 @@
 ....
 left to right direction
 
-class Spiel{
+class GameType{
     gameType: String
 }
 
-class Spieler{
+class Player{
     name: String
     id: Integer
-    punkte: Integer
+    points: Integer
 }
 
-class Rechner{
-    punkteErzielt: Integer
-    momentanerSpieler: Integer
+class Game{
+    amountPlayer: int
+    pointsScored: Integer
+    currentPlayer: Integer
 }
 
+Player "*"--"1" Game : plays a >
+Game "*"--"1" GameType : has a >
 
-Spieler "*"--"1" Spiel : spielt >
-Spieler "*"--"1" Rechner : benutzt >
 ....

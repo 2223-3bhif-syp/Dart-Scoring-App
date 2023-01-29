@@ -1,0 +1,18 @@
+[plantuml, target=Use-Case-Diagramm, format=png]
+....
+left to right direction
+
+actor "Player" as pl
+
+rectangle Dart-Scoring-App {
+    usecase "Create Game" as cg
+    usecase "Input Points" as ip
+    usecase "Choose GameType" as cgt
+    usecase "Choose Player Amount" as cpa
+
+    pl -- cg
+    pl -- ip
+    cgt .> cg : extends
+    cpa .> cg : extends
+}
+....
