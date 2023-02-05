@@ -12,7 +12,7 @@ rectangle Dart-Scoring-App {
 
     pl -- cg
     pl -- ip
-    cgt .> cg : extends
-    cpa .> cg : extends
+    cg .> cgt : include
+    cg .> cpa : include
 }
 ....

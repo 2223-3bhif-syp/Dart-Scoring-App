@@ -59,11 +59,33 @@ In der Variable pointsScored werden die geworfenen Punkte gespeichert und dann m
 von currentPlayer von der Punkteanzahl des richtigen Spielers abgezogen.
 
 ==== Wireframe
-image::img/gui.jpg[]
+image::img/startPage.jpg[]
+Auf der ersten Seite kann man die Anzahl der Spieler und und den Gamemodus
+auswaehlen.
 
+image::img/creatingPlayers.jpg[]
+Auf der zweiten Seite kann der Spieler dann auch seinen Namen eingeben.
+Das Layout aendert sich je nach dem wie viele Spieler mitspielen.
+
+* 3 Spieler: Nur das Feld mit dem 4ten Spieler verschwindet
+* 2 Spieler: Das Feld mit dem 3ten und 4ten Spieler verschwinden und die
+    oberen 2 rutschen ein wenig nach unten
+* 1 Spieler: Alle anderen Felder verschwinden und das uebrige Feld wir mittig
+    positioniert
+
+
+image::img/calculator.jpg[]
 Spieloberflaeche wo die Benutzer die getroffenen Punkte eintragen koennen,
 es werden waehrend des Spieles die Punktestaende und die letzten 3
 Wuerfe (1 Runde) der Spieler angezeigt.
+
+Bei weniger Spielern bleibt das Konzept des Layouts gleich wie oben erwaehnt,
+nur dass wenn nur eine Person spielt dies nun links angezeigt wird und nicht zentral.
+
+image::img/winningPage.jpg[]
+Am Ende des Spieles wird der Name des Gewinners oben angezeigt und darunter
+erscheint eine Krone und ein Knopf um zuruck auf die erste Seite zu kommen
+und ein neues Spiel anfangen zu koennen.
 
 === UCD
 [plantuml, target=Use-Case-Diagramm, format=png]
@@ -80,10 +102,11 @@ rectangle Dart-Scoring-App {
 
     pl -- cg
     pl -- ip
-    cgt .> cg : extends
-    cpa .> cg : extends
+    cg .> cgt : include
+    cg .> cpa : include
 }
 ....
+
 
 === 4.2 Nichtfunktionale Anforderungen
 * Benutzbarkeit
