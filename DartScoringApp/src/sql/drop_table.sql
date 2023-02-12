@@ -1,0 +1,3 @@
+DROP TABLE Player;
+DROP TABLE GameType;
+DROP TABLE Game;
