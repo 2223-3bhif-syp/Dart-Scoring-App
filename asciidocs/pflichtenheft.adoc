@@ -27,36 +27,47 @@ Projekts ist die fertige Dart-Scoring-App.
 left to right direction
 
 class GameType{
-    gameType: String
+* gameTypeID: Integer
+--
 }
 
 class Player{
-    name: String
-    id: Integer
-    points: Integer
+* playerID: Integer
+--
+* name: String
 }
 
 class Game{
-    amountPlayer: int
-    pointsScored: Integer
-    currentPlayer: Integer
+* gameID: Integer
+--
+* gameType: Integer
+* currentPlayer: Integer
 }
 
-Player "*"--"1" Game : plays a >
+class GamePosition{
+* playerID: Integer
+--
+* gameID: Integer
+--
+* points: Integer
+}
+
+Player "*"--"1" GamePosition : plays a >
+GamePosition "1"--"*" Game : plays a >
 Game "*"--"1" GameType : has a >
 
 ....
 
-In der Player-Klasse is der Name, die ID und der momentane Punktestand des Spielers
-gespeichert und je nach dem welchen GameType das Game hat starten die Punkte der Spieler
-entweder bei 501 oder 301.
+In der Player-Klasse is der Name, die ID des Spielers gespeichert.
 
-Die Game-Klasse hat eine Variable in welcher die ID des momentanden Spielers steht nach
-3 eingaben wird diese Variable erhoeht bis sie so hoch ist wie die amountPlayer-Variable
-denn dann wird sie zurueckgesetz und beginnt wieder vom ersten Spieler zu zaehlen an.
+In der GamePosition-Klasse speichert man welcher Spieler bei welchem Spiel mitspielt und auch die Punke
+des jeweiligen Spieles.
 
-In der Variable pointsScored werden die geworfenen Punkte gespeichert und dann mithilfe
-von currentPlayer von der Punkteanzahl des richtigen Spielers abgezogen.
+Die Game-Klasse hat eine ID mit welcher die Klasse nach den Spielern in der GamePosition suchen kann, die
+Punkte werden dann dem gameType (501 oder 301) gleichgesetzt. Weiters ist die ID des derzeitigen Spielers
+gespeichert damit man der Reihe nach durch die List gehen kann.
+
+Die GameType-Klasse hat eine GameTypeID (501 oder 301) die dann in der Game-Klasse gespeichert wird.
 
 ==== Wireframe
 image::img/startPage.jpg[]

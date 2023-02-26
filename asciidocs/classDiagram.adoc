@@ -3,22 +3,33 @@
 left to right direction
 
 class GameType{
-    gameType: String
+* gameTypeID: Integer
+--
 }
 
 class Player{
-    name: String
-    id: Integer
-    points: Integer
+* playerID: Integer
+--
+* name: String
 }
 
 class Game{
-    amountPlayer: int
-    pointsScored: Integer
-    currentPlayer: Integer
+* gameID: Integer
+--
+* gameType: Integer
+* currentPlayer: Integer
 }
 
-Player "*"--"1" Game : plays a >
+class GamePosition{
+* playerID: Integer
+--
+* gameID: Integer
+--
+* points: Integer
+}
+
+Player "*"--"1" GamePosition : plays a >
+GamePosition "1"--"*" Game : plays a >
 Game "*"--"1" GameType : has a >
 
 ....
