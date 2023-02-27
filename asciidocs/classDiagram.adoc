@@ -30,6 +30,6 @@ class GamePosition{
 
 Player "1"--"*" GamePosition : is in >
 GamePosition "*"--"1" Game : is in <
-Game "*"--"1" GameType : has a >cm
+Game "*"--"1" GameType : has a >
 
 ....
