@@ -4,7 +4,7 @@ VALUES ('Franz'),
        ('Tim'),
        ('Robert');
 
-INSERT INTO DSA_Gametype (GT_ID)
+INSERT INTO DSA_GameParticipation (GT_ID)
 VALUES (301),
        (501);
 

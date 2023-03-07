@@ -8,6 +8,7 @@ create table DSA_Player
 create table DSA_Gametype
 (
     GT_ID INTEGER,
+    Points INTEGER,
     PRIMARY KEY(GT_ID)
 );
 create table DSA_Game
@@ -20,7 +21,7 @@ create table DSA_Game
     FOREIGN KEY (GAME_TYPE) REFERENCES DSA_Gametype(GT_ID)
 );
 
-create table DSA_GamePosition(
+create table DSA_GameParticipation(
     P_ID INTEGER,
     G_ID INTEGER,
     Points INTEGER,
