@@ -8,5 +8,5 @@ public interface RequiredMethods<T> {
     public void insert(T entity);
     public void delete(T entity);
     public List<T> findAll();
-    public T findById(long id);
+    public T findById(long... id);
 }
