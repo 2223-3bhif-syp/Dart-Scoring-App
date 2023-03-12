@@ -5,6 +5,15 @@ public class Game {
     Player currentPlayer;
     GameType gameType;
 
+    public Game(){
+
+    }
+
+    public Game(Player currentPlayer, GameType gameType){
+        this.currentPlayer = currentPlayer;
+        this.gameType = gameType;
+    }
+
     public Integer getID(){
         return this.gameId;
     }
@@ -21,7 +30,7 @@ public class Game {
         this.currentPlayer = currentPlayer;
     }
 
-    public GameType getGAME_TYPE(){
+    public GameType getGameType(){
         return this.gameType;
     }
 

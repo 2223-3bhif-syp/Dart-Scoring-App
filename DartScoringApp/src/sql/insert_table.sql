@@ -1,4 +1,4 @@
-INSERT INTO DSA_Player (NAME)
+INSERT INTO DSA_Player (P_NAME)
 VALUES ('Franz'),
        ('Gustav'),
        ('Tim'),

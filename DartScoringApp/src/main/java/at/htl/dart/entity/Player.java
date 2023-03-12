@@ -4,6 +4,14 @@ public class Player {
     Integer playerId;
     String name;
 
+    public Player(){
+
+    }
+
+    public Player(String name){
+        this.name = name;
+    }
+
     public Integer getPlayerId(){
         return this.playerId;
     }

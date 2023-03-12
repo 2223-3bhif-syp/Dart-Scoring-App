@@ -26,7 +26,7 @@ public class GameRepository implements RequiredMethods<Game>{
             PreparedStatement pStatement = connection.prepareStatement("UPDATE DSA_Game SET CURRENT_PLAYER=?, GAME_TYPE_ID=? WHERE G_ID=?");
 
             pStatement.setInt(1, entity.getCurrentPlayer().getPlayerId());
-            pStatement.setInt(2, entity.getGAME_TYPE().getId());
+            pStatement.setInt(2, entity.getGameType().getId());
             pStatement.setInt(3, entity.getID());
 
             pStatement.executeUpdate();
@@ -42,7 +42,7 @@ public class GameRepository implements RequiredMethods<Game>{
             PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_Game (CURRENT_PLAYER, GAME_TYPE_ID) VALUES (?, ?)");
 
             pStatement.setInt(1, entity.getCurrentPlayer().getPlayerId());
-            pStatement.setInt(2, entity.getGAME_TYPE().getId());
+            pStatement.setInt(2, entity.getGameType().getId());
 
             pStatement.executeUpdate();
 

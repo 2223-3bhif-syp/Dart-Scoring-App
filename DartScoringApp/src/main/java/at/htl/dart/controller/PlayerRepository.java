@@ -22,7 +22,7 @@ public class PlayerRepository implements RequiredMethods<Player> {
     @Override
     public void update(Player entity) {
         try(Connection connection = dataSource.getConnection()){
-            PreparedStatement pStatement = connection.prepareStatement("UPDATE DSA_Player SET NAME=? WHERE P_ID=?");
+            PreparedStatement pStatement = connection.prepareStatement("UPDATE DSA_Player SET P_NAME=? WHERE P_ID=?");
 
             pStatement.setString(1, entity.getName());
             pStatement.setInt(2, entity.getPlayerId());
@@ -37,7 +37,7 @@ public class PlayerRepository implements RequiredMethods<Player> {
     @Override
     public void insert(Player entity) {
         try(Connection connection = dataSource.getConnection()){
-            PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_Player NAME VALUES ?");
+            PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_PLAYER (P_NAME) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
 
             pStatement.setString(1, entity.getName());
 
@@ -85,7 +85,7 @@ public class PlayerRepository implements RequiredMethods<Player> {
                 Player player = new Player();
 
                 player.setPlayerId(resultSet.getInt("P_ID"));
-                player.setName(resultSet.getString("NAME"));
+                player.setName(resultSet.getString("P_NAME"));
 
                 playerList.add(player);
             }
@@ -116,7 +116,7 @@ public class PlayerRepository implements RequiredMethods<Player> {
                 Player player = new Player();
 
                 player.setPlayerId(resultSet.getInt("P_ID"));
-                player.setName(resultSet.getString("NAME"));
+                player.setName(resultSet.getString("P_NAME"));
 
                 return player;
             }
