@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class SqlRunner {
 
-    private static final String SCRIPT_PROPERTIES_PATH = "sql/script-files.properties";
+    private static final String SCRIPT_PROPERTIES_PATH = "src/sql/script-files.properties";
 
     public static void main(String[] args) {
         dropAndCreateTablesWithExampleData();
