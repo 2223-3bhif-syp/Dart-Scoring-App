@@ -1,7 +1,6 @@
 package at.htl.dart.controller;
 
 import at.htl.dart.entity.GameParticipation;
-import at.htl.dart.entity.Player;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -36,7 +35,7 @@ public class GameParticipationRepository implements RequiredMethods<GameParticip
     @Override
     public void insert(GameParticipation entity) {
         try(Connection connection = dataSource.getConnection()){
-            PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_GAMEPARTICIPATION (P_ID, G_ID, POINTS) VALUES (?,?, ?)");
+            PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_GAMEPARTICIPATION (P_ID, G_ID, POINTS) VALUES (?, ?, ?)");
 
             int playerId = entity.getPlayer().getPlayerId();
             int gameId = entity.getGame().getID();

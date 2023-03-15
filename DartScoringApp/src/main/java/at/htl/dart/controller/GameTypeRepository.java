@@ -1,8 +1,6 @@
 package at.htl.dart.controller;
 
-import at.htl.dart.entity.Game;
 import at.htl.dart.entity.GameType;
-import at.htl.dart.entity.Player;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -38,7 +36,7 @@ public class GameTypeRepository implements RequiredMethods<GameType> {
     @Override
     public void insert(GameType entity) {
         try(Connection connection = dataSource.getConnection()){
-            PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_GAMETYPE POINTS VALUES ?");
+            PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_GAMETYPE (POINTS) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
 
             pStatement.setInt(1, entity.getPoints());
 

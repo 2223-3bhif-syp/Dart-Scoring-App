@@ -130,15 +130,15 @@ class PlayerRepositoryTest {
         p2.setName("Yusuf");
         p3.setName("Alex");
 
+        playerRepository.save(p1);
+        playerRepository.save(p2);
+        playerRepository.save(p3);
+
         List<Player> playerList = new ArrayList<>();
 
         playerList.add(p1);
         playerList.add(p2);
         playerList.add(p3);
-
-        playerRepository.save(p1);
-        playerRepository.save(p2);
-        playerRepository.save(p3);
 
         List<Player> foundList = playerRepository.findAll();
 
@@ -167,7 +167,9 @@ class PlayerRepositoryTest {
 
         p1.setName("Ben");
 
-        playerRepository.insert(p1);
+        playerRepository.save(p1);
+
+        assertThat(p1.getPlayerId()).isEqualTo(1);
 
         assertThat(p1.getPlayerId()).isEqualTo(playerRepository.findById(p1.getPlayerId()).getPlayerId());
         assertThat(p1.getName()).isEqualTo(playerRepository.findById(p1.getPlayerId()).getName());
