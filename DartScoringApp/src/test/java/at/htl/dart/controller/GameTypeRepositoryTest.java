@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.db.api.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameTypeRepositoryTest {
     private static final String tableName = "DSA_GAMETYPE";

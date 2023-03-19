@@ -24,6 +24,8 @@ public class GameParticipationRepository implements RequiredMethods<GameParticip
             PreparedStatement pStatement = connection.prepareStatement("UPDATE DSA_GAMEPARTICIPATION SET POINTS=? WHERE P_ID=? AND G_ID=?");
 
             pStatement.setInt(1, entity.getPoints());
+            pStatement.setInt(2, entity.getPlayer().getPlayerId());
+            pStatement.setInt(3, entity.getGame().getID());
 
             pStatement.executeUpdate();
         }
