@@ -83,12 +83,12 @@ class GameParticipationRepositoryTest {
         gameParticipationRepository.save(gameParticipation2);
 
         Assertions.assertThat(table).column("P_ID")
-                .value().isEqualTo(player1.getPlayerId())
-                .value().isEqualTo(player2.getPlayerId());
+                .value().isEqualTo(player1.getId())
+                .value().isEqualTo(player2.getId());
 
         Assertions.assertThat(table).column("G_ID")
-                .value().isEqualTo(game1.getID())
-                .value().isEqualTo(game2.getID());
+                .value().isEqualTo(game1.getId())
+                .value().isEqualTo(game2.getId());
 
         Assertions.assertThat(table).column("POINTS")
                 .value().isEqualTo(gameType1.getPoints())
@@ -132,10 +132,10 @@ class GameParticipationRepositoryTest {
         gameParticipationRepository.save(gameParticipation1);
 
         Assertions.assertThat(table).column("P_ID")
-                .value().isEqualTo(player1.getPlayerId());
+                .value().isEqualTo(player1.getId());
 
         Assertions.assertThat(table).column("G_ID")
-                .value().isEqualTo(game1.getID());
+                .value().isEqualTo(game1.getId());
 
         Assertions.assertThat(table).column("POINTS")
                 .value().isEqualTo(470);
@@ -174,10 +174,10 @@ class GameParticipationRepositoryTest {
         gameParticipationRepository.save(gameParticipation1);
 
         Assertions.assertThat(table).column("P_ID")
-                .value().isEqualTo(player1.getPlayerId());
+                .value().isEqualTo(player1.getId());
 
         Assertions.assertThat(table).column("G_ID")
-                .value().isEqualTo(game1.getID());
+                .value().isEqualTo(game1.getId());
 
         Assertions.assertThat(table).column("POINTS")
                 .value().isEqualTo(gameType1.getPoints());
@@ -284,14 +284,14 @@ class GameParticipationRepositoryTest {
             assertThat(gameParticipationList.get(i).getPoints())
                     .isEqualTo(foundList.get(i).getPoints());
 
-            assertThat(gameParticipationList.get(i).getPlayer().getPlayerId())
-                    .isEqualTo(foundList.get(i).getPlayer().getPlayerId());
+            assertThat(gameParticipationList.get(i).getPlayer().getId())
+                    .isEqualTo(foundList.get(i).getPlayer().getId());
 
             assertThat(gameParticipationList.get(i).getPlayer().getName())
                     .isEqualTo(foundList.get(i).getPlayer().getName());
 
-            assertThat(gameParticipationList.get(i).getGame().getID())
-                    .isEqualTo(foundList.get(i).getGame().getID());
+            assertThat(gameParticipationList.get(i).getGame().getId())
+                    .isEqualTo(foundList.get(i).getGame().getId());
         }
     }
 
@@ -328,6 +328,6 @@ class GameParticipationRepositoryTest {
         gameParticipationRepository.save(gameParticipation1);
 
         assertThat(gameParticipation1.getPoints())
-                .isEqualTo(gameTypeRepository.findById(gameParticipation1.getPlayer().getPlayerId() ,gameParticipation1.getGame().getID()).getPoints());
+                .isEqualTo(gameTypeRepository.findById(gameParticipation1.getPlayer().getId() ,gameParticipation1.getGame().getId()).getPoints());
     }
 }

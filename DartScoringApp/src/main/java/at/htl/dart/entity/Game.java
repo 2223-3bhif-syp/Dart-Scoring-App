@@ -1,7 +1,7 @@
 package at.htl.dart.entity;
 
 public class Game {
-    Integer gameId;
+    Integer id;
     Player currentPlayer;
     GameType gameType;
 
@@ -14,12 +14,12 @@ public class Game {
         this.gameType = gameType;
     }
 
-    public Integer getID(){
-        return this.gameId;
+    public Integer getId(){
+        return this.id;
     }
 
-    public void setID(Integer id){
-        this.gameId = id;
+    public void setId(Integer id){
+        this.id = id;
     }
 
     public Player getCurrentPlayer(){

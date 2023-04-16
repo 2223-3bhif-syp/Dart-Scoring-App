@@ -1,6 +1,6 @@
 create table DSA_Player
 (
-    P_ID   INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+    P_ID   INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,
     P_NAME   VARCHAR(20),
     PRIMARY KEY (P_ID)
 );
@@ -8,7 +8,7 @@ create table DSA_Player
 create table DSA_GameType
 (
     GT_ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,
-    POINTS INTEGER,
+    POINTS INT,
     PRIMARY KEY(GT_ID)
 );
 create table DSA_Game
@@ -24,6 +24,8 @@ create table DSA_Game
 create table DSA_GameParticipation(
     P_ID INTEGER,
     G_ID INTEGER,
-    POINTS INTEGER,
-    PRIMARY KEY(G_ID, P_ID)
+    POINTS INT,
+    PRIMARY KEY(G_ID, P_ID),
+    FOREIGN KEY (P_ID) REFERENCES DSA_Player(P_ID),
+    FOREIGN KEY (G_ID) REFERENCES DSA_Game(G_ID)
 );

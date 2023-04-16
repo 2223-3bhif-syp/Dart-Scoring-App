@@ -11,7 +11,7 @@ public class GameParticipationRepository implements RequiredMethods<GameParticip
     private final DataSource dataSource = Database.getDataSource();
     @Override
     public void save(GameParticipation entity) {
-        if(this.findById((long)(entity.getPlayer().getPlayerId()), (long)(entity.getGame().getID())) == null){
+        if(this.findById(entity.getPlayer().getId(), entity.getGame().getId()) == null){
             insert(entity);
         }else {
             update(entity);
@@ -24,8 +24,8 @@ public class GameParticipationRepository implements RequiredMethods<GameParticip
             PreparedStatement pStatement = connection.prepareStatement("UPDATE DSA_GAMEPARTICIPATION SET POINTS=? WHERE P_ID=? AND G_ID=?");
 
             pStatement.setInt(1, entity.getPoints());
-            pStatement.setInt(2, entity.getPlayer().getPlayerId());
-            pStatement.setInt(3, entity.getGame().getID());
+            pStatement.setInt(2, entity.getPlayer().getId());
+            pStatement.setInt(3, entity.getGame().getId());
 
             pStatement.executeUpdate();
         }
@@ -39,8 +39,8 @@ public class GameParticipationRepository implements RequiredMethods<GameParticip
         try(Connection connection = dataSource.getConnection()){
             PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_GAMEPARTICIPATION (P_ID, G_ID, POINTS) VALUES (?, ?, ?)");
 
-            int playerId = entity.getPlayer().getPlayerId();
-            int gameId = entity.getGame().getID();
+            int playerId = entity.getPlayer().getId();
+            int gameId = entity.getGame().getId();
 
             if(this.findById(playerId, gameId) == null){
                 pStatement.setInt(1, playerId);
@@ -60,8 +60,8 @@ public class GameParticipationRepository implements RequiredMethods<GameParticip
         try(Connection connection = dataSource.getConnection()){
             PreparedStatement pStatement = connection.prepareStatement("DELETE FROM DSA_GAMEPARTICIPATION WHERE P_ID=? AND G_ID=?");
 
-            pStatement.setInt(1, entity.getPlayer().getPlayerId());
-            pStatement.setInt(2, entity.getGame().getID());
+            pStatement.setInt(1, entity.getPlayer().getId());
+            pStatement.setInt(2, entity.getGame().getId());
 
             pStatement.executeUpdate();
         }
@@ -102,21 +102,21 @@ public class GameParticipationRepository implements RequiredMethods<GameParticip
     }
 
     @Override
-    public GameParticipation findById(long... ids) {
+    public GameParticipation findById(int... ids) {
 
         if(ids.length < 2){
             return null;
         }
 
-        long playerId = ids[0];
-        long gameId = ids[1];
+        int playerId = ids[0];
+        int gameId = ids[1];
 
         try(Connection connection = dataSource.getConnection()){
 
             PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM DSA_GAMEPARTICIPATION WHERE P_ID=? AND G_ID=?");
 
-            pStatement.setInt(1, (int)playerId);
-            pStatement.setInt(2, (int)gameId);
+            pStatement.setInt(1, playerId);
+            pStatement.setInt(2, gameId);
 
             ResultSet resultSet = pStatement.executeQuery();
 

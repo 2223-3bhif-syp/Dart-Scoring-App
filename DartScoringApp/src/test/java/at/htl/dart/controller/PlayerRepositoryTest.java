@@ -47,16 +47,16 @@ class PlayerRepositoryTest {
 
         playerRepository.save(p2);
 
-        assertThat(p1.getPlayerId()).isEqualTo(1);
-        assertThat(p2.getPlayerId()).isEqualTo(2);
+        assertThat(p1.getId()).isEqualTo(1);
+        assertThat(p2.getId()).isEqualTo(2);
 
         assertThat(table).column("P_NAME")
                 .value().isEqualTo("Ben")
                 .value().isEqualTo("Alex");
 
         assertThat(table).column("P_ID")
-                .value().isEqualTo(p1.getPlayerId())
-                .value().isEqualTo(p2.getPlayerId());
+                .value().isEqualTo(p1.getId())
+                .value().isEqualTo(p2.getId());
     }
 
     @Test
@@ -75,10 +75,10 @@ class PlayerRepositoryTest {
 
         playerRepository.update(p1);
 
-        assertThat(p1.getPlayerId()).isEqualTo(1);
+        assertThat(p1.getId()).isEqualTo(1);
 
         assertThat(table).column("P_NAME").value().isEqualTo("Yusuf");
-        assertThat(table).column("P_ID").value().isEqualTo(p1.getPlayerId());
+        assertThat(table).column("P_ID").value().isEqualTo(p1.getId());
     }
 
     @Test
@@ -93,10 +93,10 @@ class PlayerRepositoryTest {
 
         playerRepository.insert(p1);
 
-        assertThat(p1.getPlayerId()).isEqualTo(1);
+        assertThat(p1.getId()).isEqualTo(1);
 
         assertThat(table).column("P_NAME").value().isEqualTo(p1.getName());
-        assertThat(table).column("P_ID").value().isEqualTo(p1.getPlayerId());
+        assertThat(table).column("P_ID").value().isEqualTo(p1.getId());
     }
 
     @Test
@@ -142,15 +142,15 @@ class PlayerRepositoryTest {
 
         List<Player> foundList = playerRepository.findAll();
 
-        assertThat(p1.getPlayerId()).isEqualTo(1);
-        assertThat(p2.getPlayerId()).isEqualTo(2);
-        assertThat(p3.getPlayerId()).isEqualTo(3);
+        assertThat(p1.getId()).isEqualTo(1);
+        assertThat(p2.getId()).isEqualTo(2);
+        assertThat(p3.getId()).isEqualTo(3);
 
         assertThat(playerList.size()).isEqualTo(foundList.size());
 
         for(int i = 0; i < playerList.size(); i++){
-            assertThat(playerList.get(i).getPlayerId())
-                    .isEqualTo(foundList.get(i).getPlayerId());
+            assertThat(playerList.get(i).getId())
+                    .isEqualTo(foundList.get(i).getId());
 
             assertThat(playerList.get(i).getName())
                     .isEqualTo(foundList.get(i).getName());
@@ -169,9 +169,9 @@ class PlayerRepositoryTest {
 
         playerRepository.save(p1);
 
-        assertThat(p1.getPlayerId()).isEqualTo(1);
+        assertThat(p1.getId()).isEqualTo(1);
 
-        assertThat(p1.getPlayerId()).isEqualTo(playerRepository.findById(p1.getPlayerId()).getPlayerId());
-        assertThat(p1.getName()).isEqualTo(playerRepository.findById(p1.getPlayerId()).getName());
+        assertThat(p1.getId()).isEqualTo(playerRepository.findById(p1.getId()).getId());
+        assertThat(p1.getName()).isEqualTo(playerRepository.findById(p1.getId()).getName());
     }
 }

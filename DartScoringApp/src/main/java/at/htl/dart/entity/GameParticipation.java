@@ -3,7 +3,7 @@ package at.htl.dart.entity;
 public class GameParticipation {
     Player player;
     Game game;
-    Integer points;
+    int points;
 
     public GameParticipation(){
 
@@ -31,7 +31,7 @@ public class GameParticipation {
         this.game = game;
     }
 
-    public Integer getPoints() {
+    public int getPoints() {
         return this.points;
     }
 

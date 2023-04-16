@@ -13,7 +13,7 @@ class GameTest {
     @BeforeEach
     void setUp(){
         p1 = new Player("Ben");
-        p1.setPlayerId(1);
+        p1.setId(1);
 
         gameType1 = new GameType(501);
         gameType1.setId(2);
@@ -23,16 +23,16 @@ class GameTest {
     void getID() {
         Game g1 = new Game(p1, gameType1);
 
-        assertEquals(g1.getID(), null);
+        assertEquals(g1.getId(), null);
     }
 
     @Test
     void setID() {
         Game g1 = new Game(p1, gameType1);
 
-        g1.setID(3);
+        g1.setId(3);
 
-        assertEquals(g1.getID(), 3);
+        assertEquals(g1.getId(), 3);
     }
 
     @Test

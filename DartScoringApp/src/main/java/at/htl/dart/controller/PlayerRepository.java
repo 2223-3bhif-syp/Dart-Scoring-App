@@ -12,7 +12,7 @@ public class PlayerRepository implements RequiredMethods<Player> {
 
     @Override
     public void save(Player entity) {
-        if(entity.getPlayerId() == null){
+        if(entity.getId() == null){
             insert(entity);
         }else {
             update(entity);
@@ -25,7 +25,7 @@ public class PlayerRepository implements RequiredMethods<Player> {
             PreparedStatement pStatement = connection.prepareStatement("UPDATE DSA_Player SET P_NAME=? WHERE P_ID=?");
 
             pStatement.setString(1, entity.getName());
-            pStatement.setInt(2, entity.getPlayerId());
+            pStatement.setInt(2, entity.getId());
 
             pStatement.executeUpdate();
         }
@@ -45,7 +45,7 @@ public class PlayerRepository implements RequiredMethods<Player> {
 
             try(ResultSet keys = pStatement.getGeneratedKeys()){
                 if(keys.next()){
-                    entity.setPlayerId(keys.getInt(1));
+                    entity.setId(keys.getInt(1));
                 }
             }catch (Exception e){
 
@@ -61,11 +61,11 @@ public class PlayerRepository implements RequiredMethods<Player> {
         try(Connection connection = dataSource.getConnection()){
             PreparedStatement pStatement = connection.prepareStatement("DELETE FROM DSA_Player WHERE P_ID=?");
 
-            pStatement.setInt(1, entity.getPlayerId());
+            pStatement.setInt(1, entity.getId());
 
             pStatement.executeUpdate();
 
-            entity.setPlayerId(null);
+            entity.setId(null);
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -84,7 +84,7 @@ public class PlayerRepository implements RequiredMethods<Player> {
             while(resultSet.next()){
                 Player player = new Player();
 
-                player.setPlayerId(resultSet.getInt("P_ID"));
+                player.setId(resultSet.getInt("P_ID"));
                 player.setName(resultSet.getString("P_NAME"));
 
                 playerList.add(player);
@@ -100,22 +100,22 @@ public class PlayerRepository implements RequiredMethods<Player> {
     }
 
     @Override
-    public Player findById(long... ids) {
+    public Player findById(int... ids) {
 
-        long id = ids[0];
+        int id = ids[0];
 
         try(Connection connection = dataSource.getConnection()){
 
             PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM DSA_Player WHERE P_ID=?");
 
-            pStatement.setInt(1, (int)id);
+            pStatement.setInt(1, id);
 
             ResultSet resultSet = pStatement.executeQuery();
 
             if(resultSet.next()){
                 Player player = new Player();
 
-                player.setPlayerId(resultSet.getInt("P_ID"));
+                player.setId(resultSet.getInt("P_ID"));
                 player.setName(resultSet.getString("P_NAME"));
 
                 return player;

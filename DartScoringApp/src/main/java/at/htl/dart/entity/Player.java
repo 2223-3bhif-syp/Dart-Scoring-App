@@ -1,7 +1,7 @@
 package at.htl.dart.entity;
 
 public class Player {
-    Integer playerId;
+    Integer id;
     String name;
 
     public Player(){
@@ -12,12 +12,12 @@ public class Player {
         this.name = name;
     }
 
-    public Integer getPlayerId(){
-        return this.playerId;
+    public Integer getId(){
+        return this.id;
     }
 
-    public void setPlayerId(Integer playerId){
-        this.playerId = playerId;
+    public void setId(Integer playerId){
+        this.id = playerId;
     }
     public String getName(){
         return this.name;

@@ -2,7 +2,7 @@ package at.htl.dart.entity;
 
 public class GameType {
     Integer id;
-    Integer points;
+    int points;
 
     public GameType(){
 
@@ -20,7 +20,7 @@ public class GameType {
         this.id = id;
     }
 
-    public Integer getPoints() {
+    public int getPoints() {
         return this.points;
     }
 

@@ -11,7 +11,7 @@ public class GameRepository implements RequiredMethods<Game>{
     private final DataSource dataSource = Database.getDataSource();
     @Override
     public void save(Game entity) {
-        if(entity.getID() == null){
+        if(entity.getId() == null){
             insert(entity);
         }else {
             update(entity);
@@ -23,9 +23,9 @@ public class GameRepository implements RequiredMethods<Game>{
         try(Connection connection = dataSource.getConnection()){
             PreparedStatement pStatement = connection.prepareStatement("UPDATE DSA_Game SET CURRENT_PLAYER=?, GAME_TYPE_ID=? WHERE G_ID=?");
 
-            pStatement.setInt(1, entity.getCurrentPlayer().getPlayerId());
+            pStatement.setInt(1, entity.getCurrentPlayer().getId());
             pStatement.setInt(2, entity.getGameType().getId());
-            pStatement.setInt(3, entity.getID());
+            pStatement.setInt(3, entity.getId());
 
             pStatement.executeUpdate();
         }
@@ -39,14 +39,14 @@ public class GameRepository implements RequiredMethods<Game>{
         try(Connection connection = dataSource.getConnection()){
             PreparedStatement pStatement = connection.prepareStatement("INSERT INTO DSA_Game (CURRENT_PLAYER, GAME_TYPE_ID) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
 
-            pStatement.setInt(1, entity.getCurrentPlayer().getPlayerId());
+            pStatement.setInt(1, entity.getCurrentPlayer().getId());
             pStatement.setInt(2, entity.getGameType().getId());
 
             pStatement.executeUpdate();
 
             try(ResultSet keys = pStatement.getGeneratedKeys()){
                 if(keys.next()){
-                    entity.setID(keys.getInt(1));
+                    entity.setId(keys.getInt(1));
                 }
             }catch (Exception e){
 
@@ -62,11 +62,11 @@ public class GameRepository implements RequiredMethods<Game>{
         try(Connection connection = dataSource.getConnection()){
             PreparedStatement pStatement = connection.prepareStatement("DELETE FROM DSA_GAME WHERE G_ID=?");
 
-            pStatement.setInt(1, entity.getID());
+            pStatement.setInt(1, entity.getId());
 
             pStatement.executeUpdate();
 
-            entity.setID(null);
+            entity.setId(null);
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -88,9 +88,9 @@ public class GameRepository implements RequiredMethods<Game>{
                 GameTypeRepository gameTypeRepository = new GameTypeRepository();
                 PlayerRepository playerRepository = new PlayerRepository();
 
-                game.setID(resultSet.getInt("G_ID"));
-                game.setGameType(gameTypeRepository.findById((long)resultSet.getInt("GAME_TYPE_ID")));
-                game.setCurrentPlayer(playerRepository.findById((long)resultSet.getInt("CURRENT_PLAYER")));
+                game.setId(resultSet.getInt("G_ID"));
+                game.setGameType(gameTypeRepository.findById(resultSet.getInt("GAME_TYPE_ID")));
+                game.setCurrentPlayer(playerRepository.findById(resultSet.getInt("CURRENT_PLAYER")));
 
                 gameList.add(game);
             }
@@ -105,9 +105,9 @@ public class GameRepository implements RequiredMethods<Game>{
     }
 
     @Override
-    public Game findById(long... ids) {
+    public Game findById(int... ids) {
 
-        long id = ids[0];
+        int id = ids[0];
 
         try(Connection connection = dataSource.getConnection()){
 
@@ -123,9 +123,9 @@ public class GameRepository implements RequiredMethods<Game>{
                 GameTypeRepository gameTypeRepository = new GameTypeRepository();
                 PlayerRepository playerRepository = new PlayerRepository();
 
-                game.setID(resultSet.getInt("G_ID"));
-                game.setGameType(gameTypeRepository.findById((long)resultSet.getInt("GAME_TYPE_ID")));
-                game.setCurrentPlayer(playerRepository.findById((long)resultSet.getInt("CURRENT_PLAYER")));
+                game.setId(resultSet.getInt("G_ID"));
+                game.setGameType(gameTypeRepository.findById(resultSet.getInt("GAME_TYPE_ID")));
+                game.setCurrentPlayer(playerRepository.findById(resultSet.getInt("CURRENT_PLAYER")));
 
                 return game;
             }

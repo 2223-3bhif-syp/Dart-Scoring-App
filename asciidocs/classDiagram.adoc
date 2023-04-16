@@ -3,33 +3,34 @@
 left to right direction
 
 class GameType{
-* gameTypeID: Integer
+* id: Integer
 --
+* points : int
 }
 
 class Player{
-* playerID: Integer
+* id: Integer
 --
 * name: String
 }
 
 class Game{
-* gameID: Integer
+* id: Integer
 --
-* gameType: Integer
-* currentPlayer: Integer
+* gameType: GameType
+* currentPlayer: Player
 }
 
-class GamePosition{
-* playerID: Integer
+class GameParticipation{
+* player: Player
 --
-* gameID: Integer
+* game: Game
 --
-* points: Integer
+* points: int
 }
 
-Player "1"--"*" GamePosition : is in >
-GamePosition "*"--"1" Game : is in <
+Player "1"--"*" GameParticipation : is in >
+GameParticipation "*"--"1" Game : is in <
 Game "*"--"1" GameType : has a >
-
+Player "1"--"*" Game : plays a >
 ....

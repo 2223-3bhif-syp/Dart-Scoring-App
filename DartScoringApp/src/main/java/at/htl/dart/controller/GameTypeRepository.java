@@ -99,15 +99,15 @@ public class GameTypeRepository implements RequiredMethods<GameType> {
     }
 
     @Override
-    public GameType findById(long... ids) {
+    public GameType findById(int... ids) {
 
-        long id = ids[0];
+        int id = ids[0];
 
         try(Connection connection = dataSource.getConnection()){
 
             PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM DSA_GameType WHERE GT_ID=?");
 
-            pStatement.setInt(1, (int)id);
+            pStatement.setInt(1, id);
 
             ResultSet resultSet = pStatement.executeQuery();
 

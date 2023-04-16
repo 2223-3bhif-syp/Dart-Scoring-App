@@ -12,13 +12,13 @@ class GameParticipationTest {
     @BeforeEach
     void setUp(){
         p1 = new Player("Ben");
-        p1.setPlayerId(1);
+        p1.setId(1);
 
         GameType gameType1 = new GameType(501);
         gameType1.setId(2);
 
         g1 = new Game(p1, gameType1);
-        g1.setID(3);
+        g1.setId(3);
     }
 
     @Test
@@ -33,7 +33,7 @@ class GameParticipationTest {
         GameParticipation gameParticipation1 = new GameParticipation(p1, g1, g1.getGameType().getPoints());
 
         Player p2 = new Player("Yusuf");
-        p2.setPlayerId(4);
+        p2.setId(4);
 
         gameParticipation1.setPlayer(p2);
 
@@ -52,7 +52,7 @@ class GameParticipationTest {
         GameParticipation gameParticipation1 = new GameParticipation(p1, g1, g1.getGameType().getPoints());
 
         Game g2 = new Game();
-        g2.setID(4);
+        g2.setId(4);
 
         gameParticipation1.setGame(g2);
 

@@ -66,20 +66,20 @@ class GameRepositoryTest {
 
         gameRepository.save(game2);
 
-        assertThat(game1.getID()).isEqualTo(1);
-        assertThat(game2.getID()).isEqualTo(2);
+        assertThat(game1.getId()).isEqualTo(1);
+        assertThat(game2.getId()).isEqualTo(2);
 
         Assertions.assertThat(table).column("G_ID")
-                .value().isEqualTo(game1.getID())
-                .value().isEqualTo(game2.getID());
+                .value().isEqualTo(game1.getId())
+                .value().isEqualTo(game2.getId());
 
         Assertions.assertThat(table).column("GAME_TYPE_ID")
                 .value().isEqualTo(gameType1.getId())
                 .value().isEqualTo(gameType1.getId());
 
         Assertions.assertThat(table).column("CURRENT_PLAYER")
-                .value().isEqualTo(currentPlayer1.getPlayerId())
-                .value().isEqualTo(currentPlayer2.getPlayerId());
+                .value().isEqualTo(currentPlayer1.getId())
+                .value().isEqualTo(currentPlayer2.getId());
     }
 
     @Test
@@ -111,16 +111,16 @@ class GameRepositoryTest {
 
         gameRepository.update(game1);
 
-        assertThat(game1.getID()).isEqualTo(1);
+        assertThat(game1.getId()).isEqualTo(1);
 
         Assertions.assertThat(table).column("G_ID")
-                .value().isEqualTo(game1.getID());
+                .value().isEqualTo(game1.getId());
 
         Assertions.assertThat(table).column("GAME_TYPE_ID")
                 .value().isEqualTo(gameType1.getId());
 
         Assertions.assertThat(table).column("CURRENT_PLAYER")
-                .value().isEqualTo(currentPlayer2.getPlayerId());
+                .value().isEqualTo(currentPlayer2.getId());
     }
 
     @Test
@@ -146,16 +146,16 @@ class GameRepositoryTest {
 
         gameRepository.save(game1);
 
-        assertThat(game1.getID()).isEqualTo(1);
+        assertThat(game1.getId()).isEqualTo(1);
 
         Assertions.assertThat(table).column("G_ID")
-                .value().isEqualTo(game1.getID());
+                .value().isEqualTo(game1.getId());
 
         Assertions.assertThat(table).column("GAME_TYPE_ID")
                 .value().isEqualTo(gameType1.getId());
 
         Assertions.assertThat(table).column("CURRENT_PLAYER")
-                .value().isEqualTo(currentPlayer1.getPlayerId());
+                .value().isEqualTo(currentPlayer1.getId());
     }
 
     @Test
@@ -225,17 +225,17 @@ class GameRepositoryTest {
 
         List<Game> foundList = gameRepository.findAll();
 
-        assertThat(game1.getID()).isEqualTo(1);
-        assertThat(game2.getID()).isEqualTo(2);
+        assertThat(game1.getId()).isEqualTo(1);
+        assertThat(game2.getId()).isEqualTo(2);
 
         assertThat(gameList.size()).isEqualTo(foundList.size());
 
         for(int i = 0; i < gameList.size(); i++){
-            assertThat(gameList.get(i).getID())
-                    .isEqualTo(foundList.get(i).getID());
+            assertThat(gameList.get(i).getId())
+                    .isEqualTo(foundList.get(i).getId());
 
-            assertThat(gameList.get(i).getCurrentPlayer().getPlayerId())
-                    .isEqualTo(foundList.get(i).getCurrentPlayer().getPlayerId());
+            assertThat(gameList.get(i).getCurrentPlayer().getId())
+                    .isEqualTo(foundList.get(i).getCurrentPlayer().getId());
 
             assertThat(gameList.get(i).getCurrentPlayer().getName())
                     .isEqualTo(foundList.get(i).getCurrentPlayer().getName());
@@ -272,17 +272,17 @@ class GameRepositoryTest {
 
         gameRepository.save(game1);
 
-        assertThat(game1.getID()).isEqualTo(1);
+        assertThat(game1.getId()).isEqualTo(1);
 
-        assertThat(game1.getID())
-                .isEqualTo(gameRepository.findById(game1.getID()).getID());
-        assertThat(game1.getCurrentPlayer().getPlayerId())
-                .isEqualTo(gameRepository.findById(game1.getID()).getCurrentPlayer().getPlayerId());
+        assertThat(game1.getId())
+                .isEqualTo(gameRepository.findById(game1.getId()).getId());
+        assertThat(game1.getCurrentPlayer().getId())
+                .isEqualTo(gameRepository.findById(game1.getId()).getCurrentPlayer().getId());
         assertThat(game1.getCurrentPlayer().getName())
-                .isEqualTo(gameRepository.findById(game1.getID()).getCurrentPlayer().getName());
+                .isEqualTo(gameRepository.findById(game1.getId()).getCurrentPlayer().getName());
         assertThat(game1.getGameType().getId())
-                .isEqualTo(gameRepository.findById(game1.getID()).getGameType().getId());
+                .isEqualTo(gameRepository.findById(game1.getId()).getGameType().getId());
         assertThat(game1.getGameType().getPoints())
-                .isEqualTo(gameRepository.findById(game1.getID()).getGameType().getPoints());
+                .isEqualTo(gameRepository.findById(game1.getId()).getGameType().getPoints());
     }
 }
