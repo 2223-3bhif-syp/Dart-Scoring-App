@@ -1,14 +1,19 @@
 package at.htl.dart.database;
 
 import at.htl.dart.controller.Database;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.apache.ibatis.jdbc.ScriptRunner;
-import org.apache.ibatis.logging.LogFactory;
 
 import javax.sql.DataSource;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
+
+import static javafx.application.Application.launch;
 
 public class SqlRunner {
 
