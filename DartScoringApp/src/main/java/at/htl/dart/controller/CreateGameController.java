@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -53,6 +50,7 @@ public class CreateGameController {
         }
         else{
             // Message window that the entries are invalid
+            showStartGameAlert();
         }
     }
 
@@ -122,10 +120,10 @@ public class CreateGameController {
         }
     }
 
-    public boolean checkAllCreateGameInputs(String name1, String name2, int startPoints){
+    public boolean checkAllCreateGameInputs(String name1, String name2, Integer startPoints){
         boolean isReadyToStart = false;
 
-        if(validateName(name1) && validateName(name2) && startPointsChoiceBox.getSelectionModel().getSelectedItem() != null){
+        if(validateName(name1) && validateName(name2) && startPoints != null){
             isReadyToStart = true;
         }
         return isReadyToStart;
@@ -136,5 +134,18 @@ public class CreateGameController {
         nameInputPlayerOneNotCorrect.setText("");
         nameInputPlayerTwoNotCorrect.setText("");
         choiceBoxNotSelected.setText("");
+    }
+
+    // show start game alert
+    public void showStartGameAlert(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Inputs");
+        alert.setHeaderText("Not able to start game");
+        alert.setContentText("The create game inputs are not valid. Please check your inputs and try again!");
+
+        ButtonType closeButton = new ButtonType("Close");
+        alert.getButtonTypes().setAll(closeButton);
+
+        alert.showAndWait();
     }
 }
