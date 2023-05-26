@@ -30,6 +30,7 @@ public class CreateGameController {
     public Label nameInputPlayerOneNotCorrect;
     public Label nameInputPlayerTwoNotCorrect;
     public Label choiceBoxNotSelected;
+    public Button confirmBtn;
 
     public void initialize(){
         ObservableList<Integer> choices = FXCollections.observableArrayList();
@@ -40,28 +41,18 @@ public class CreateGameController {
         startPointsChoiceBox.setItems(choices);
     }
 
-    // players enter their names and select from which score they want to start
+    // players move to the game window
     public void beginGameBtnOnClick(ActionEvent actionEvent) {
         Player player1 = new Player(playerOneName.getText());
         Player player2 = new Player(playerTwoName.getText());
-        int selectedPoints = startPointsChoiceBox.getValue();
+        Integer points = startPointsChoiceBox.getValue();
 
-        boolean isValidPlayerOne = validateName(player1.getName());
-        boolean isValidPlayerTwo = validateName(player2.getName());
-        boolean isSelectedChoiceBox = startPointsChoiceBox.getSelectionModel().getSelectedItem() != null;
-
-        if(!isValidPlayerOne){
-            nameInputPlayerOneNotCorrect.setTextFill(Color.RED);
-            nameInputPlayerOneNotCorrect.setText("Name not valid!");
+        // all inputs are correct
+        if(checkAllCreateGameInputs(player1.getName(), player2.getName(), points)){
+            openPlayGameWindow(player1.getName(), player2.getName(), points);
         }
-
-        if(!isValidPlayerTwo){
-            nameInputPlayerTwoNotCorrect.setTextFill(Color.RED);
-            nameInputPlayerTwoNotCorrect.setText("Name not valid!");
-        }
-
-        if(isValidPlayerOne && isValidPlayerTwo && isSelectedChoiceBox){
-            openPlayGameWindow(player1.getName(), player2.getName(), selectedPoints);
+        else{
+            // Message window that the entries are invalid
         }
     }
 
@@ -95,5 +86,55 @@ public class CreateGameController {
             e.printStackTrace();
             System.out.println("Could not open playGameWindow");
         }
+    }
+
+    // Button that checks the user input when creating a game
+    public void confirmBtnOnClick(ActionEvent actionEvent) {
+        boolean isValidPlayerOne = validateName(playerOneName.getText());
+        boolean isValidPlayerTwo = validateName(playerTwoName.getText());
+        boolean isSelectedChoiceBox = startPointsChoiceBox.getSelectionModel().getSelectedItem() != null;
+
+        if(!isValidPlayerOne){
+            nameInputPlayerOneNotCorrect.setTextFill(Color.RED);
+            nameInputPlayerOneNotCorrect.setText("Name not valid!");
+        }
+        else{
+            nameInputPlayerOneNotCorrect.setTextFill(Color.GREEN);
+            nameInputPlayerOneNotCorrect.setText("Name is valid");
+        }
+
+        if(!isValidPlayerTwo){
+            nameInputPlayerTwoNotCorrect.setTextFill(Color.RED);
+            nameInputPlayerTwoNotCorrect.setText("Name not valid!");
+        }
+        else{
+            nameInputPlayerTwoNotCorrect.setTextFill(Color.GREEN);
+            nameInputPlayerTwoNotCorrect.setText("Name is valid");
+        }
+
+        if(!isSelectedChoiceBox){
+            choiceBoxNotSelected.setTextFill(Color.RED);
+            choiceBoxNotSelected.setText("No start points selected!");
+        }
+        else{
+            choiceBoxNotSelected.setTextFill(Color.GREEN);
+            choiceBoxNotSelected.setText("starting points are selected");
+        }
+    }
+
+    public boolean checkAllCreateGameInputs(String name1, String name2, int startPoints){
+        boolean isReadyToStart = false;
+
+        if(validateName(name1) && validateName(name2) && startPointsChoiceBox.getSelectionModel().getSelectedItem() != null){
+            isReadyToStart = true;
+        }
+        return isReadyToStart;
+    }
+
+    // clears info if input is correct or invalid
+    public void clearInfoBtnOnClick(ActionEvent actionEvent) {
+        nameInputPlayerOneNotCorrect.setText("");
+        nameInputPlayerTwoNotCorrect.setText("");
+        choiceBoxNotSelected.setText("");
     }
 }
