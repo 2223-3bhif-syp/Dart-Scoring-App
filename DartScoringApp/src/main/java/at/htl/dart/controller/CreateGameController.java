@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+import java.net.URL;
 
 import static java.awt.Color.RED;
 import static java.awt.Color.red;
@@ -67,9 +68,10 @@ public class CreateGameController {
     }
 
     // open playGame.fxml
-    private void openPlayGameWindow(String playerNameOne, String playerNameTwo, int selectedPoints){
+    private void openPlayGameWindow(String playerNameOne, String playerNameTwo, Integer selectedPoints){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/playGame.fxml"));
+            URL fxmlPlayGameUrl = getClass().getResource("/playGame.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlPlayGameUrl);
             Parent root = loader.load();
 
             PlayGameController playGameController = loader.getController();
@@ -79,6 +81,9 @@ public class CreateGameController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+
+            Stage createGameStage = (Stage) beginGameBtn.getScene().getWindow();
+            createGameStage.close();
         }
         catch (IOException e){
             e.printStackTrace();
