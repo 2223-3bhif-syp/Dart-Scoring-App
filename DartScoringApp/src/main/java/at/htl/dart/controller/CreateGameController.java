@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -27,7 +28,6 @@ public class CreateGameController {
     public Label nameInputPlayerOneNotCorrect;
     public Label nameInputPlayerTwoNotCorrect;
     public Label choiceBoxNotSelected;
-    public Button confirmBtn;
 
     public void initialize(){
         ObservableList<Integer> choices = FXCollections.observableArrayList();
@@ -86,11 +86,25 @@ public class CreateGameController {
         }
     }
 
-    // Button that checks the user input when creating a game
-    public void confirmBtnOnClick(ActionEvent actionEvent) {
+    public boolean checkAllCreateGameInputs(String name1, String name2, Integer startPoints){
+        boolean isReadyToStart = false;
+
+        if(validateName(name1) && validateName(name2) && startPoints != null){
+            isReadyToStart = true;
+        }
+        return isReadyToStart;
+    }
+
+    // show start game alert
+    public void showStartGameAlert(){
         boolean isValidPlayerOne = validateName(playerOneName.getText());
         boolean isValidPlayerTwo = validateName(playerTwoName.getText());
         boolean isSelectedChoiceBox = startPointsChoiceBox.getSelectionModel().getSelectedItem() != null;
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Inputs");
+        alert.setHeaderText("Not able to start game");
+        alert.setContentText("The create game inputs are not valid. Please check your inputs and try again!");
 
         if(!isValidPlayerOne){
             nameInputPlayerOneNotCorrect.setTextFill(Color.RED);
@@ -118,33 +132,16 @@ public class CreateGameController {
             choiceBoxNotSelected.setTextFill(Color.GREEN);
             choiceBoxNotSelected.setText("starting points are selected");
         }
-    }
-
-    public boolean checkAllCreateGameInputs(String name1, String name2, Integer startPoints){
-        boolean isReadyToStart = false;
-
-        if(validateName(name1) && validateName(name2) && startPoints != null){
-            isReadyToStart = true;
-        }
-        return isReadyToStart;
-    }
-
-    // clears info if input is correct or invalid
-    public void clearInfoBtnOnClick(ActionEvent actionEvent) {
-        nameInputPlayerOneNotCorrect.setText("");
-        nameInputPlayerTwoNotCorrect.setText("");
-        choiceBoxNotSelected.setText("");
-    }
-
-    // show start game alert
-    public void showStartGameAlert(){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Invalid Inputs");
-        alert.setHeaderText("Not able to start game");
-        alert.setContentText("The create game inputs are not valid. Please check your inputs and try again!");
 
         ButtonType closeButton = new ButtonType("Close");
         alert.getButtonTypes().setAll(closeButton);
+
+        alert.setOnCloseRequest((DialogEvent event) -> {
+            // Reset the text fields
+            nameInputPlayerOneNotCorrect.setText("");
+            nameInputPlayerTwoNotCorrect.setText("");
+            choiceBoxNotSelected.setText("");
+        });
 
         alert.showAndWait();
     }
