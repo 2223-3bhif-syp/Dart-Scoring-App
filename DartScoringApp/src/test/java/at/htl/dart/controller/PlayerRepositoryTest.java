@@ -47,8 +47,9 @@ class PlayerRepositoryTest {
 
         playerRepository.save(p2);
 
-        assertThat(p1.getId()).isEqualTo(1);
-        assertThat(p2.getId()).isEqualTo(2);
+        assertThat(table).exists()
+                .column("P_ID").value().isEqualTo(p1.getId())
+                .column("P_ID").value().isEqualTo(p2.getId());
 
         assertThat(table).column("P_NAME")
                 .value().isEqualTo("Ben")
@@ -77,7 +78,7 @@ class PlayerRepositoryTest {
 
         assertThat(p1.getId()).isEqualTo(1);
 
-        assertThat(table).column("P_NAME").value().isEqualTo("Yusuf");
+        assertThat(table).column("P_NAME").value().isEqualTo(p1.getName());
         assertThat(table).column("P_ID").value().isEqualTo(p1.getId());
     }
 

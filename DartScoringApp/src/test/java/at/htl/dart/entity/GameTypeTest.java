@@ -12,7 +12,7 @@ class GameTypeTest {
         GameType g1 = new GameType(501);
 
         // assert
-        assertEquals(g1.getId(), null);
+        assertNull(g1.getId());
     }
 
     @Test
