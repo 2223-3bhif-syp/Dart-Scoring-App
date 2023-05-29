@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 public class PlayGameController {
     @FXML
@@ -41,6 +42,21 @@ public class PlayGameController {
     public Label player2SecondDart;
     public Label player2ThirdDart;
     public Label player2Points;
+    public AnchorPane buttonPane;
+    private int currentPlayerPoints;
+    private Label currentPlayerPointsLabel;
+    private int muliplier = 1;
+    private int dartCounter = 0;
+
+    @FXML
+    public void initialize(){
+        buttonPane.getChildren().forEach(node -> {
+            if(node instanceof Button){
+                Button button = (Button) node;
+                button.setOnAction(this::handleButtonClick);
+            }
+        });
+    }
 
     public void setPlayerNames(String playerNameOne, String playerNameTwo){
         namePlayer1.setText(playerNameOne);
@@ -55,75 +71,36 @@ public class PlayGameController {
         player2Points.setText(points.toString());
     }
 
-    public void btn1OnClick(ActionEvent actionEvent) {
+    public void handleButtonClick(ActionEvent actionEvent){
+        Button clickedButton = (Button) actionEvent.getSource();
+        String buttonText = clickedButton.getText();
+
+        if(buttonText.equals("2x")){
+            muliplier = 2;
+            return;
+        } else if (buttonText.equals("3x")) {
+            muliplier = 3;
+            return;
+        }
+
+        int points = Integer.parseInt(buttonText) * muliplier;
+        currentPlayerPoints -= points;
+        dartCounter++;
+
+        // updatePointsDisplayed
+
+        if(currentPlayerPoints == 0){
+            // showGameResult
+        }
+
+        if(dartCounter == 3){
+            //switchPlayers
+            // reset labels
+        }
+
     }
 
-    public void btn2OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn3OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn4OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn5OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn6OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn7OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn8OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn9OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn10OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn11OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn12OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn13OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn14OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn15OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn16OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn17OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn18OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn19OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn20OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn25OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn50OnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn2xOnClick(ActionEvent actionEvent) {
-    }
-
-    public void btn3xOnClick(ActionEvent actionEvent) {
+    private void updatePointsDisplayed(){
+        currentPlayerPointsLabel.setText(Integer.toString(currentPlayerPoints));
     }
 }
