@@ -76,7 +76,8 @@ public class CreateGameController {
 
             PlayGameController playGameController = loader.getController();
             playGameController.setPlayerNames(playerNameOne, playerNameTwo);
-            playGameController.setSelectedPoints(selectedPoints);
+            playGameController.setPointsPlayer1(selectedPoints);
+            playGameController.setPointsPlayer2(selectedPoints);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
