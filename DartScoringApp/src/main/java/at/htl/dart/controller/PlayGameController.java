@@ -2,6 +2,7 @@ package at.htl.dart.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -96,7 +97,7 @@ public class PlayGameController {
         updatePointsDisplayed();
 
         if(currentPlayerPoints == 0){
-            // showGameResult
+            showGameResult(currentPlayerNameLabel.getText() + " has won the game!");
         }
 
         if(dartCounter == 3){
@@ -121,5 +122,13 @@ public class PlayGameController {
 
         currentPlayerPoints = Integer.parseInt(currentPlayerPointsLabel.getText());
         currentPlayerPointsLabel.setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
+    }
+
+    private void showGameResult(String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Spiel beendet");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
