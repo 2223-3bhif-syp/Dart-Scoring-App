@@ -5,6 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.paint.Color;
+
+import java.awt.*;
 
 public class PlayGameController {
     @FXML
@@ -45,6 +50,7 @@ public class PlayGameController {
     public AnchorPane buttonPane;
     private int currentPlayerPoints;
     private Label currentPlayerPointsLabel;
+    private Label currentPlayerNameLabel;
     private int muliplier = 1;
     private int dartCounter = 0;
 
@@ -87,20 +93,33 @@ public class PlayGameController {
         currentPlayerPoints -= points;
         dartCounter++;
 
-        // updatePointsDisplayed
+        updatePointsDisplayed();
 
         if(currentPlayerPoints == 0){
             // showGameResult
         }
 
         if(dartCounter == 3){
-            //switchPlayers
-            // reset labels
+            switchPlayers();
         }
-
     }
 
     private void updatePointsDisplayed(){
         currentPlayerPointsLabel.setText(Integer.toString(currentPlayerPoints));
+    }
+
+    private void switchPlayers(){
+        currentPlayerPointsLabel.setBackground(null);
+
+        if(currentPlayerNameLabel == namePlayer1){
+            currentPlayerNameLabel = namePlayer2;
+            currentPlayerPointsLabel = player2Points;
+        } else{
+            currentPlayerNameLabel = namePlayer1;
+            currentPlayerPointsLabel = player1Points;
+        }
+
+        currentPlayerPoints = Integer.parseInt(currentPlayerPointsLabel.getText());
+        currentPlayerPointsLabel.setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
     }
 }
