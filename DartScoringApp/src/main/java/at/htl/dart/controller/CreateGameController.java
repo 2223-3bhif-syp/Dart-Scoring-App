@@ -34,7 +34,6 @@ public class CreateGameController {
         ObservableList<Integer> choices = FXCollections.observableArrayList();
         choices.add(501);
         choices.add(301);
-        choices.add(201);
 
         startPointsChoiceBox.setItems(choices);
     }

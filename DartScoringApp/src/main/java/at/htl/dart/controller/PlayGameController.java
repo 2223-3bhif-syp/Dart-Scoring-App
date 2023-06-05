@@ -10,8 +10,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
-
 public class PlayGameController {
     @FXML
     public Button btn1;
