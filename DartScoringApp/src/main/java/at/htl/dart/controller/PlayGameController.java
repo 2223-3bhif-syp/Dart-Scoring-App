@@ -50,7 +50,6 @@ public class PlayGameController {
     private int currentPlayerPoints;
     private Label currentPlayerPointsLabel;
     private Label currentPlayerNameLabel;
-    private int muliplier = 1;
     private int dartCounter = 0;
 
     @FXML
@@ -66,31 +65,43 @@ public class PlayGameController {
     public void setPlayerNames(String playerNameOne, String playerNameTwo){
         namePlayer1.setText(playerNameOne);
         namePlayer2.setText(playerNameTwo);
+        currentPlayerNameLabel = namePlayer1;
+        currentPlayerPointsLabel = player1Points;
     }
 
     public void setPointsPlayer1(Integer points){
         player1Points.setText(points.toString());
+        currentPlayerPoints = points;
     }
 
     public void setPointsPlayer2(Integer points){
         player2Points.setText(points.toString());
+        currentPlayerPoints = points;
     }
 
     public void handleButtonClick(ActionEvent actionEvent){
         Button clickedButton = (Button) actionEvent.getSource();
         String buttonText = clickedButton.getText();
+        System.out.println(buttonText);
+        int multiplier = 1;
 
         if(buttonText.equals("2x")){
-            muliplier = 2;
+            multiplier = 2;
             return;
         } else if (buttonText.equals("3x")) {
-            muliplier = 3;
+            multiplier = 3;
             return;
         }
 
-        int points = Integer.parseInt(buttonText) * muliplier;
+        int points = Integer.parseInt(buttonText) * multiplier;
         currentPlayerPoints -= points;
         dartCounter++;
+
+        if (currentPlayerNameLabel == namePlayer1) {
+            updatePlayer1DartLabels(buttonText, dartCounter);
+        } else if (currentPlayerNameLabel == namePlayer2) {
+            updatePlayer2DartLabels(buttonText, dartCounter);
+        }
 
         updatePointsDisplayed();
 
@@ -100,20 +111,28 @@ public class PlayGameController {
 
         if(dartCounter == 3){
             switchPlayers();
+            dartCounter = 0; // Reset Dart Counter for the new player
+            resetDartLabels(player1FirstDart, player1SecondDart, player1ThirdDart); // Reset dart labels for player 1
+            resetDartLabels(player2FirstDart, player2SecondDart, player2ThirdDart);
         }
     }
 
     private void updatePointsDisplayed(){
         currentPlayerPointsLabel.setText(Integer.toString(currentPlayerPoints));
+
+        // Color
+        currentPlayerPointsLabel.setBackground(null);
+        currentPlayerPointsLabel.setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
     }
+
 
     private void switchPlayers(){
         currentPlayerPointsLabel.setBackground(null);
 
-        if(currentPlayerNameLabel == namePlayer1){
+        if(currentPlayerNameLabel.getText().equals(namePlayer1.getText())){
             currentPlayerNameLabel = namePlayer2;
             currentPlayerPointsLabel = player2Points;
-        } else{
+        } else {
             currentPlayerNameLabel = namePlayer1;
             currentPlayerPointsLabel = player1Points;
         }
@@ -122,6 +141,7 @@ public class PlayGameController {
         currentPlayerPointsLabel.setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
     }
 
+
     private void showGameResult(String message){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Spiel beendet");
@@ -129,4 +149,31 @@ public class PlayGameController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    private void updatePlayer1DartLabels(String score, int dartCounter) {
+        if (dartCounter == 1) {
+            player1FirstDart.setText(score);
+        } else if (dartCounter == 2) {
+            player1SecondDart.setText(score);
+        } else if (dartCounter == 3) {
+            player1ThirdDart.setText(score);
+        }
+    }
+
+    private void updatePlayer2DartLabels(String score, int dartCounter) {
+        if (dartCounter == 1) {
+            player2FirstDart.setText(score);
+        } else if (dartCounter == 2) {
+            player2SecondDart.setText(score);
+        } else if (dartCounter == 3) {
+            player2ThirdDart.setText(score);
+        }
+    }
+
+    private void resetDartLabels(Label... labels) {
+        for (Label label : labels) {
+            label.setText("0");
+        }
+    }
+
 }
