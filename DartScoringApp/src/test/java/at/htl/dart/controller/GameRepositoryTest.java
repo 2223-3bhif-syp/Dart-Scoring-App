@@ -23,7 +23,6 @@ class GameRepositoryTest {
     public void setUp() {
         // to make sure every Table is empty and set up right
         SqlRunner.dropTablesAndCreateEmptyTables();
-        Player p1 = new Player("Gustaf");
     }
 
     @AfterEach

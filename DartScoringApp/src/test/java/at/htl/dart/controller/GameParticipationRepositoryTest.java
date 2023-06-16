@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.*;
 import org.assertj.db.type.Table;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.db.output.Outputs.output;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,18 +81,19 @@ class GameParticipationRepositoryTest {
         gameParticipation2.setPoints(280);
 
         gameParticipationRepository.save(gameParticipation2);
+        //
 
-        Assertions.assertThat(table).column("P_ID")
-                .value().isEqualTo(player1.getId())
-                .value().isEqualTo(player2.getId());
+        output(table).toConsole();
 
-        Assertions.assertThat(table).column("G_ID")
-                .value().isEqualTo(game1.getId())
-                .value().isEqualTo(game2.getId());
+        Assertions.assertThat(table).exists();
 
-        Assertions.assertThat(table).column("POINTS")
-                .value().isEqualTo(gameType1.getPoints())
-                .value().isEqualTo(280);
+
+        //
+
+         Assertions.assertThat(table)
+                .column("P_ID").value().isEqualTo(player1.getId()).value().isEqualTo(player2.getId())
+                .column("G_ID").value().isEqualTo(game1.getId()).value().isEqualTo(game2.getId())
+                .column("POINTS").value().isEqualTo(gameType1.getPoints()).value().isEqualTo(280);
     }
 
     @Test
@@ -278,19 +279,19 @@ class GameParticipationRepositoryTest {
 
         List<GameParticipation> foundList = gameParticipationRepository.findAll();
 
-        assertThat(gameParticipationList.size()).isEqualTo(foundList.size());
+        org.assertj.core.api.Assertions.assertThat(gameParticipationList.size()).isEqualTo(foundList.size());
 
         for(int i = 0; i < gameParticipationList.size(); i++){
-            assertThat(gameParticipationList.get(i).getPoints())
+            org.assertj.core.api.Assertions.assertThat(gameParticipationList.get(i).getPoints())
                     .isEqualTo(foundList.get(i).getPoints());
 
-            assertThat(gameParticipationList.get(i).getPlayer().getId())
+            org.assertj.core.api.Assertions.assertThat(gameParticipationList.get(i).getPlayer().getId())
                     .isEqualTo(foundList.get(i).getPlayer().getId());
 
-            assertThat(gameParticipationList.get(i).getPlayer().getName())
+            org.assertj.core.api.Assertions.assertThat(gameParticipationList.get(i).getPlayer().getName())
                     .isEqualTo(foundList.get(i).getPlayer().getName());
 
-            assertThat(gameParticipationList.get(i).getGame().getId())
+            org.assertj.core.api.Assertions.assertThat(gameParticipationList.get(i).getGame().getId())
                     .isEqualTo(foundList.get(i).getGame().getId());
         }
     }
@@ -327,7 +328,7 @@ class GameParticipationRepositoryTest {
 
         gameParticipationRepository.save(gameParticipation1);
 
-        assertThat(gameParticipation1.getPoints())
+        org.assertj.core.api.Assertions.assertThat(gameParticipation1.getPoints())
                 .isEqualTo(gameTypeRepository.findById(gameParticipation1.getPlayer().getId() ,gameParticipation1.getGame().getId()).getPoints());
     }
 }

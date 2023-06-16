@@ -20,7 +20,7 @@ class GameTest {
         gameType1.setId(2);
 
         // assert
-        assertEquals(g1.getId(), null);
+        assertNull(g1.getId());
     }
 
     @Test
