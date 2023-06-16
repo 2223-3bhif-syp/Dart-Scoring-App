@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.dart.controller.PlayGameController">
+   <children>
+      <Label fx:id="namePlayer1" alignment="CENTER" layoutX="20.0" layoutY="53.0" prefHeight="30.0" prefWidth="207.0" style="-fx-border-color: #b100cd; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="player1FirstDart" alignment="CENTER" layoutX="20.0" layoutY="91.0" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="" />
+      <Label fx:id="player1SecondDart" alignment="CENTER" layoutX="88.0" layoutY="91.0" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="" />
+      <Label fx:id="player1ThirdDart" alignment="CENTER" layoutX="156.0" layoutY="91.0" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="" />
+      <Label fx:id="player1Points" alignment="CENTER" layoutX="235.0" layoutY="50.0" prefHeight="66.0" prefWidth="91.0" style="-fx-border-color: #7600bc; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Label fx:id="namePlayer2" alignment="CENTER" layoutX="20.0" layoutY="239.0" prefHeight="30.0" prefWidth="207.0" style="-fx-border-color: #b100cd; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="player2FirstDart" alignment="CENTER" layoutX="20.0" layoutY="276.0" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="" />
+      <Label fx:id="player2SecondDart" alignment="CENTER" layoutX="88.0" layoutY="276.0" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="" />
+      <Label fx:id="player2ThirdDart" alignment="CENTER" layoutX="156.0" layoutY="276.0" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="" />
+      <Label fx:id="player2Points" alignment="CENTER" layoutX="235.0" layoutY="236.0" prefHeight="66.0" prefWidth="91.0" style="-fx-border-color: #7600bc; -fx-background-color: #FFFFFF; -fx-border-radius: 5;" text="">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Line endX="195.79998779296875" layoutX="122.0" layoutY="192.0" startX="-100.0" />
+      <Line endX="195.79998779296875" layoutX="121.0" layoutY="157.0" startX="-100.0" />
+      <Label layoutX="111.0" layoutY="166.0" text="Dart Scoring">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="190.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+      <Line endX="-99.99996948242188" endY="317.0000305175781" layoutX="474.0" layoutY="83.0" startX="-99.99996948242188" startY="-83.00000762939453" stroke="#b100cd" />
+      <AnchorPane fx:id="buttonPane">
+         <Button fx:id="btn1" layoutX="381.0" layoutY="52.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="1" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn2" layoutX="432.0" layoutY="52.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="2" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn3" layoutX="487.0" layoutY="52.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="3" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn4" layoutX="547.0" layoutY="52.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="4" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn5" layoutX="381.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="5" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn6" layoutX="381.0" layoutY="145.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="9" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn7" layoutX="436.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="6" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn8" layoutX="491.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="7" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn9" layoutX="547.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="8" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn10" ellipsisString="" layoutX="432.0" layoutY="144.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="10" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn11" ellipsisString="" layoutX="487.0" layoutY="144.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="11" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn12" layoutX="542.0" layoutY="145.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="12" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn13" layoutX="381.0" layoutY="193.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="13" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn14" layoutX="432.0" layoutY="193.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="14" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn15" layoutX="487.0" layoutY="193.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="15" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn16" layoutX="542.0" layoutY="193.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="16" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn17" layoutX="381.0" layoutY="237.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="17" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn18" layoutX="432.0" layoutY="237.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="18" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn19" layoutX="487.0" layoutY="237.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="19" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn20" layoutX="542.0" layoutY="237.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="20" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn25" layoutX="381.0" layoutY="285.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="25" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn50" layoutX="432.0" layoutY="285.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="50" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn2x" layoutX="487.0" layoutY="285.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="2x" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+         <Button fx:id="btn3x" layoutX="542.0" layoutY="285.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" style="-fx-background-color: #7fbfff; -fx-border-color: #b100cd; -fx-border-radius: 5;" text="3x" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+      </AnchorPane>
+      <Label layoutX="260.0" layoutY="30.0" text="Points">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="116.0" text="1" />
+      <Label layoutX="120.0" layoutY="116.0" text="2" />
+      <Label layoutX="186.0" layoutY="116.0" text="3" />
+      <Label layoutX="260.0" layoutY="217.0" text="Points">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="302.0" text="1" />
+      <Label layoutX="120.0" layoutY="302.0" text="2" />
+      <Label layoutX="186.0" layoutY="302.0" text="3" />
+   </children>
+</AnchorPane>

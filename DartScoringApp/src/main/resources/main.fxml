@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.dart.controller.CreateGameController">
+   <children>
+      <Label layoutX="165.0" text="Dart Scoring">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="54.0" fitWidth="61.0" layoutX="364.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="157.0" layoutY="136.0" text="Player 1">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="151.0" text="Name:" />
+      <TextField fx:id="playerOneName" layoutX="224.0" layoutY="137.0" style="-fx-border-color: #b100cd; -fx-border-radius: 10;" />
+      <Label layoutX="157.0" layoutY="186.0" text="Player 2">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="201.0" text="Name:" />
+      <TextField fx:id="playerTwoName" layoutX="224.0" layoutY="192.0" style="-fx-border-color: #b100cd; -fx-border-radius: 10;" />
+      <Label layoutX="229.0" layoutY="78.0" text="Create Players">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="174.20001220703125" endY="-7.62939453125E-6" layoutX="289.0" layoutY="105.0" startX="-181.8000030517578" startY="-7.62939453125E-6" />
+      <Line endX="174.20001220703125" endY="-7.62939453125E-6" layoutX="289.0" layoutY="243.0" startX="-181.8000030517578" startY="-7.62939453125E-6" />
+      <Label layoutX="229.0" layoutY="252.0" text="Choose Start">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="startPointsChoiceBox" layoutX="208.0" layoutY="279.0" prefWidth="150.0" />
+      <Button fx:id="beginGameBtn" layoutX="245.0" layoutY="347.0" mnemonicParsing="false" onAction="#beginGameBtnOnClick" style="-fx-border-color: #b100cd; -fx-border-radius: 10; -fx-background-color: #FFFFFF;" text="Begin Game">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="nameInputPlayerOneNotCorrect" layoutX="391.0" layoutY="138.0" prefHeight="26.0" prefWidth="192.0" />
+      <Label fx:id="nameInputPlayerTwoNotCorrect" layoutX="391.0" layoutY="192.0" prefHeight="26.0" prefWidth="192.0" />
+      <Label fx:id="choiceBoxNotSelected" layoutX="383.0" layoutY="278.0" prefHeight="26.0" prefWidth="192.0" />
+   </children>
+</AnchorPane>

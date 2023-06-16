@@ -1,0 +1,36 @@
+[plantuml, target=diagram-classes, format=png]
+....
+left to right direction
+
+class GameType{
+* id: Integer
+--
+* points : int
+}
+
+class Player{
+* id: Integer
+--
+* name: String
+}
+
+class Game{
+* id: Integer
+--
+* gameType: GameType
+* currentPlayer: Player
+}
+
+class GameParticipation{
+* player: Player
+--
+* game: Game
+--
+* points: int
+}
+
+Player "1"--"*" GameParticipation : is in >
+GameParticipation "*"--"1" Game : is in <
+Game "*"--"1" GameType : has a >
+Player "1"--"*" Game : plays a >
+....

@@ -1,0 +1,23 @@
+= Dart Scoring App
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+== Beschreibung
+
+Da man, wenn man Dart spielt, die Punkte zählen muss, was kompliziert werden kann,
+wird nun ein System gebraucht, das für beliebig viele Spieler in beliebigen
+Spielmodi das Zählen übernimmt. So kann sich der Spieler voll und ganz auf das
+Spiel selbst konzentrieren und vermeidet Berechnungsfehler.
+
+== Dokumente
+- https://2223-3bhif-syp.github.io/Dart-Scoring-App/projectAssignment[Projektauftrag]
+- https://2223-3bhif-syp.github.io/Dart-Scoring-App/classDiagram[Klassendiagramm]
+- https://2223-3bhif-syp.github.io/Dart-Scoring-App/pflichtenheft[Pflichtenheft]
+
+== YouTrack
+- https://vm81.htl-leonding.ac.at/agiles/99-362/current[ProductBacklog]
